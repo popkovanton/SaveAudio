@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SaveAudio</string>
+    <string name="button">Save</string>
+    <string name="folder_name">TestFolderAudio</string>
+
+
+    <string name="saved_in">saved in</string>
+    <string name="the_file_is_null">the file is null</string>
+    <string name="permission_denied">Permission Denied!</string>
+    <string name="permission_allowed">Permission Allowed</string>
+</resources>
