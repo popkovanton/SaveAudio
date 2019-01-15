@@ -43,7 +43,7 @@ public class FileUtil {
         return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
     }
 
-    public static File getNewFile(Context context, String folderName) {
+    public static File getNewFile(Context context, String folderName, String resolution) {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US);
 
@@ -63,7 +63,7 @@ public class FileUtil {
             return null;
         }
 
-        return new File(path, timeStamp + ".wav");
+        return new File(path, timeStamp + resolution);
     }
 
     public static boolean checkPermissionWRITE_EXTERNAL_STORAGE(

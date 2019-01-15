@@ -40,13 +40,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void initRequestPermission() {
         if (FileUtil.checkPermissionWRITE_EXTERNAL_STORAGE(this)) {
             FileUtil.setPermissionWriteDenied(true);
-            saveAudioInMemory(R.raw.test);
+            saveAudioInMemory(R.raw.test3);
         }
     }
 
     private void saveAudioInMemory(int resource) {
         if (FileUtil.isPermissionWriteDenied()) {
-            File file = FileUtil.getNewFile(getApplicationContext(), getString(R.string.folder_name)); // создание директории и имени файла
+            File file = FileUtil.getNewFile(getApplicationContext(), getString(R.string.folder_name), ".mp3"); // создание директории и имени файла
             InputStream in = getResources().openRawResource(resource);
             if (file != null) {
                 if (resource == 0) {
@@ -54,7 +54,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 try {
                     FileOutputStream out = new FileOutputStream(file);
-                    byte[] buff = new byte[1024];
+                    int length = in.available();
+                    Log.i(FileUtil.TAG, "file length = " + length);
+                    byte[] buff = new byte[length];
                     int read = 0;
                     while ((read = in.read(buff)) > 0) {
                         out.write(buff, 0, read);
